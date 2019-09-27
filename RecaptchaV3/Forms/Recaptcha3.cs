@@ -18,7 +18,7 @@ namespace Recaptcha.Forms
         {
             this.Id = new Guid("08b8057f-06c9-4ca5-8a42-fd1fc2a46eff");
             this.Name = "Recaptcha3";
-            this.Description = "Render a custom text field.";
+            this.Description = "Render a Recaptcha v3.";
             this.Icon = "icon-eye";
             this.DataType = FieldDataType.String;
             this.SortOrder = 10;
@@ -39,7 +39,7 @@ namespace Recaptcha.Forms
 
             if (!obj.Success)
             {
-                returnStrings.Add("You need to include 'custom' in the field!");
+                returnStrings.Add("Recaptcha Failed. Try again!");
             }
 
             return returnStrings;
