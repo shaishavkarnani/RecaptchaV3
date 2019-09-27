@@ -1,0 +1,30 @@
+@using System.Linq
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+@{
+    var siteKey = Umbraco.Forms.Core.Configuration.GetSetting("RecaptchaPublicKey");
+    var Usecase = "homepage";
+    var themeSetting = Model.AdditionalSettings.FirstOrDefault(x => x.Key == "AdditionalSettings");
+    if (themeSetting.Value != "")
+    {
+        Usecase = themeSetting.Value;
+    }
+
+    if (!string.IsNullOrEmpty(siteKey))
+    {
+
+        <script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
+        <input type="text" id="@Model.Id" name="g-recaptcha-response" />
+        <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('@siteKey', { action: '@Usecase' }).then(function (token) {
+                    $("#@(Model.Id)").val(token);
+                    console.log(token);
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <p class="error">ERROR: ReCaptcha v.3 is missing the Site Key - Please update the web.config to include 'key="RecaptchaSiteKey"'</p>
+    }
+}
