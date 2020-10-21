@@ -17,7 +17,8 @@
         <script>
             grecaptcha.ready(function() {
                 grecaptcha.execute('@siteKey', { action: '@Usecase' }).then(function (token) {
-                    $("#@(Model.Id)").val(token);                });
+                    $("#@(Model.Id)").val(token);
+                });
             });
         </script>
     }
