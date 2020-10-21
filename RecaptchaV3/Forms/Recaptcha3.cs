@@ -23,6 +23,7 @@ namespace Recaptcha.Forms
             this.DataType = FieldDataType.String;
             this.SortOrder = 10;
             this.SupportsRegex = true;
+            this.HideLabel = true;
         }
 
         [Setting("Additional Settings", PreValues = "homepage,login,social,e-commerce", Description = "Use case", View = "Dropdownlist")]
