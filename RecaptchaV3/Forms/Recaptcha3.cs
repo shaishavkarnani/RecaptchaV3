@@ -14,8 +14,12 @@ namespace Recaptcha.Forms
 {
     public class Recaptcha3 : FieldType
     {
-        public Recaptcha3()
+        private readonly IFacadeConfiguration _configuration;
+
+        public Recaptcha3(IFacadeConfiguration configuration)
         {
+            _configuration = configuration;
+
             this.Id = new Guid("08b8057f-06c9-4ca5-8a42-fd1fc2a46eff");
             this.Name = "Recaptcha3";
             this.Description = "Render a Recaptcha v3.";
@@ -32,7 +36,7 @@ namespace Recaptcha.Forms
         {
             var returnStrings = new List<string>();
             var token = HttpContext.Current.Request["g-recaptcha-response"];
-            string secret = Configuration.GetSetting("RecaptchaPrivateKey");
+            var secret = _configuration.GetSetting("RecaptchaPrivateKey");
             var client = new WebClient();
             var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, token));
             var obj = JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult);
