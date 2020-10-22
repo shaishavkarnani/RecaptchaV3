@@ -1,0 +1,25 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Recaptcha3</id>
+    <version>1.0.0</version>
+    <authors>Shaishav Karnani, Mark Wemekamp</authors>
+    <owners>Shaishav Karnani, Mark Wemekamp</owners>
+    <projectUrl>https://github.com/markwemekamp/RecaptchaV3</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This will add a Recaptcha v3 field to your Umbraco Forms installation</description>
+    <releaseNotes><![CDATA[1.0.0 Initial release]]></releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>umbraco, umbraco-cms, umbraco forms, google recaptcha</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\RecaptchaV3.dll" target="lib\net472" />
+    <file src="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Recaptcha3.html" target="content\App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\" />
+    <file src="App_Plugins\UmbracoForms\Images\recaptcha3.png" target="content\App_Plugins\UmbracoForms\Images\" />
+    <file src="Views\Partials\Forms\Fieldtypes\Fieldtype.Recaptcha3.cshtml" target="content\Views\Partials\Forms\Fieldtypes\" />
+    <file src="Views\Partials\Forms\Themes\default\Fieldtypes\Fieldtype.Recaptcha3.cshtml" target="content\Views\Partials\Forms\Themes\default\Fieldtypes\" />
+  </files>
+</package>
