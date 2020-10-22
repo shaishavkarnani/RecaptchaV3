@@ -13,12 +13,11 @@
     {
 
         <script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
-        <input type="text" id="@Model.Id" name="g-recaptcha-response" />
+        <input type="hidden" id="@Model.Id" name="g-recaptcha-response" />
         <script>
             grecaptcha.ready(function() {
                 grecaptcha.execute('@siteKey', { action: '@Usecase' }).then(function (token) {
                     $("#@(Model.Id)").val(token);
-                    console.log(token);
                 });
             });
         </script>
