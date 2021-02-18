@@ -16,7 +16,7 @@
         <script>
             grecaptcha.ready(function() {
                 grecaptcha.execute('@siteKey', { action: '@usecase' }).then(function (token) {
-                    document.getElementById(@(Model.Id)).value = token;
+                    document.getElementById("@Model.Id").value = token;
                     console.log(token);
                 });
             });
