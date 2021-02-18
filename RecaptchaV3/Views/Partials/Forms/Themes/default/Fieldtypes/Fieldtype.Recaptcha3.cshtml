@@ -2,11 +2,11 @@
 @model Umbraco.Forms.Mvc.Models.FieldViewModel
 @{
     var siteKey = Umbraco.Forms.Core.Configuration.GetSetting("RecaptchaPublicKey");
-    var Usecase = "homepage";
+    var usecase = "homepage";
     var themeSetting = Model.AdditionalSettings.FirstOrDefault(x => x.Key == "AdditionalSettings");
     if (themeSetting.Value != "")
     {
-        Usecase = themeSetting.Value;
+        usecase = themeSetting.Value;
     }
 
     if (!string.IsNullOrEmpty(siteKey))
@@ -16,8 +16,8 @@
         <input type="text" id="@Model.Id" name="g-recaptcha-response" />
         <script>
             grecaptcha.ready(function() {
-                grecaptcha.execute('@siteKey', { action: '@Usecase' }).then(function (token) {
-                    $("#@(Model.Id)").val(token);
+                grecaptcha.execute('@siteKey', { action: '@usecase' }).then(function (token) {
+                    document.getElementById(@(Model.Id)).value = token;
                     console.log(token);
                 });
             });
