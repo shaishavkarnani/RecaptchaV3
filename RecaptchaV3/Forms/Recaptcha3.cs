@@ -31,7 +31,7 @@ namespace Recaptcha.Forms
         public override IEnumerable<string> ValidateField(Form form, Field field, IEnumerable<object> postedValues, HttpContextBase context, IFormStorage formStorage)
         {
             var returnStrings = new List<string>();
-            var token = HttpContext.Current.Request["g-recaptcha-response"];
+            var token = context.Request.Form["g-recaptcha-response"];
             string secret = Configuration.GetSetting("RecaptchaPrivateKey");
             var client = new WebClient();
             var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, token));
